@@ -3,3 +3,30 @@
 <p><%= link_to "Back", projects_path %>
 <%= link_to "Edit", edit_project_path %>
 <%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }  %></p>
+
+<h2>Add Workers</h2>
+
+<%= form_for([@project, @project.workers.build]) do |f| %>
+  <p>
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :number %><br>
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<h2>Current Workers</h2>
+<% @project.workers.each do |worker| %>
+  <p><strong><%= worker.name %></strong></p>
+  <p><%= worker.number %></p>
+  <p><%= worker.email %></p>
+<% end %>
