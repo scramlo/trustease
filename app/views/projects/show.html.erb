@@ -1,32 +1,31 @@
-<h1><%= @project.title %></h1>
+<h1>Your Individual Project</h1>
+<strong><%= @project.title %></strong>
 <p><%= @project.description %></p>
-<p><%= link_to "Back", projects_path %>
-<%= link_to "Edit", edit_project_path %>
-<%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }  %></p>
+<p><%= link_to "Back", projects_path %> <%= link_to "Edit", edit_project_path(@project) %></p>
 
-<h2>Add Workers</h2>
+<strong>Add a Worker:</strong>
+<%= render "workers/form" %>
 
-<%= form_for([@project, @project.workers.build]) do |f| %>
-  <p>
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :number %><br>
-    <%= f.text_field :number %>
-  </p>
-  <p>
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<h2>Current Workers</h2>
+<strong>Workers:</strong>
 <% @project.workers.each do |worker| %>
+<% next if worker.new_record? %>
   <p><strong><%= worker.name %></strong></p>
-  <p><%= worker.number %></p>
-  <p><%= worker.email %></p>
+  <p><%= worker.number %>, <%= worker.email %></p>
+  <p><%= link_to 'Destroy Worker', [worker.project, worker],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %></p>
 <% end %>
+
+<strong>Add a Step:</strong>
+<%= render "steps/form" %>
+
+<strong>Steps:</strong>
+<ol>
+<% @project.steps.each do |step| %>
+<% next if step.new_record? %>
+  <li><%= step.name %></li>
+  <%= link_to 'Destroy Step', [step.project, step],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+<% end %>
+</ol>

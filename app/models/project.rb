@@ -4,5 +4,5 @@ class Project < ActiveRecord::Base
                     length: { minimum: 5 }
 
   has_many :workers
-
+  has_many :steps
 end

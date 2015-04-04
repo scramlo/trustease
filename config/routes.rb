@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :projects do
-    resources :workers
+    resources :workers, controller: "workers"
+    resources :steps, controller: "steps"
   end
 
   root 'home#index'
