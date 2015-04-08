@@ -19,17 +19,28 @@
   <div class="col-md-6 column">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <h3 class="panel-title">
-          Workers
-        </h3>
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+          <h3 class="panel-title">
+              Workers
+              <div class='pull-right'><span class="glyphicon glyphicon-collapse-down"></span></div>
+          </h3>
+        </a>
       </div>
-      <div class="panel-body">
-        <% @project.workers.each do |worker| %>
-        <% next if worker.new_record? %>
-          <p><strong><%= worker.name %></strong></p>
-          <p><%= worker.number %>, <%= worker.email %></p>
-          <p><%= link_to 'Destroy Worker', [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } %></p>
-        <% end %>
+      <div id="collapse1" class="panel-collapse collapse">
+        <ul class='list-group'>
+          <% @project.workers.each do |worker| %>
+          <% next if worker.new_record? %>
+            <li class="list-group-item">
+              <p>
+                <strong><%= worker.name %></strong>
+                <%= link_to [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } do %>
+                  <span class='glyphicon glyphicon-remove'></span>
+                <% end %>
+              </p>
+              <p><%= worker.number %>, <%= worker.email %></p>
+            </li>
+          <% end %>
+        </ul>
       </div>
       <div class="panel-footer">
         <!-- Button trigger AddWorkerModal -->
@@ -42,20 +53,28 @@
   <div class="col-md-6 column">
     <div class="panel panel-warning">
       <div class="panel-heading">
-        <h3 class="panel-title">
-          Steps
-        </h3>
+        <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+          <h3 class="panel-title">
+            Steps
+            <div class='pull-right'><span class="glyphicon glyphicon-collapse-down"></span></div>
+          </h3>
+        </a>
       </div>
-      <div class="panel-body">
-        <ol>
-        <% @project.steps.each do |step| %>
-        <% next if step.new_record? %>
-          <li>
-            <%= step.name %>
-            <%= link_to 'Destroy Step', [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } %>
-          </li>
-        <% end %>
-        </ol>
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+          <ol>
+          <% @project.steps.each do |step| %>
+          <% next if step.new_record? %>
+            <li>
+              <%= step.name %>
+              <%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                <span class='glyphicon glyphicon-remove'></span>
+              <% end %>
+            </li>
+            <br>
+          <% end %>
+          </ol>
+        </div>
       </div>
       <div class="panel-footer">
         <!-- Button trigger AddStepModal -->

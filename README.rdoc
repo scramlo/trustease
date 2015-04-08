@@ -1,28 +1,21 @@
-== README
+== Trustease README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This webapp is a simple way for church trustees to manage their projects.
 
-Things you may want to cover:
+Things you can do:
 
-* Ruby version
+* Create Projects
 
-* System dependencies
+* Create Steps to Complete Projects
 
-* Configuration
+* Create Workers and Their Info for Projects
 
-* Database creation
+Still To Do:
 
-* Database initialization
+* Users
 
-* How to run the test suite
+* Mark Steps Complete and Sync With A Progress Bar
 
-* Services (job queues, cache servers, search engines, etc.)
+* Move Steps Up and Down
 
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+* Delete Dependents
