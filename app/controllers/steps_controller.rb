@@ -6,6 +6,16 @@ class StepsController < ApplicationController
     redirect_to project_path(@project)
   end
 
+  def edit
+    @project = Project.find(params[:project_id])
+  end
+
+  def update
+    @project = Project.find(params[:project_id])
+    @step = @project.steps.find(params[:id])
+    @step.update(step_params)
+  end
+
   def destroy
     @project = Project.find(params[:project_id])
     @step = @project.steps.find(params[:id])

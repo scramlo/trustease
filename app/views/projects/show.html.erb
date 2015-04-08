@@ -11,9 +11,7 @@
 <% next if worker.new_record? %>
   <p><strong><%= worker.name %></strong></p>
   <p><%= worker.number %>, <%= worker.email %></p>
-  <p><%= link_to 'Destroy Worker', [worker.project, worker],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %></p>
+  <p><%= link_to 'Destroy Worker', [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 
 <strong>Add a Step:</strong>
@@ -23,9 +21,9 @@
 <ol>
 <% @project.steps.each do |step| %>
 <% next if step.new_record? %>
-  <li><%= step.name %></li>
-  <%= link_to 'Destroy Step', [step.project, step],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
+  <li>
+    <%= step.name %>
+    <%= link_to 'Destroy Step', [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } %>
+  </li>
 <% end %>
 </ol>
