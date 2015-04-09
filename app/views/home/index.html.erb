@@ -1,3 +1,26 @@
-<h1>welcome to trusty</h1>
-<p>it's easy to keep track of trustee projects</p>
-<p><%= link_to "View Projects", projects_path %></p>
+<div class="row clearfix">
+	<div class="col-md-12 column">
+		<div class="jumbotron">
+      <% if trustee_signed_in? %>
+        <h1>
+          Hey <%= current_trustee.firstname %>!
+        </h1>
+        <p>
+          <%= link_to "All Projects", projects_path, class: "btn btn-primary" %>
+          <%= link_to "My Projects", myprojects_path, class: "btn btn-default" %>
+        </p>
+      <% else %>
+        <h1>
+          Welcome to Trust<i>ease!</i>
+        </h1>
+        <p>
+          A simple way for Church Trustees to manage projects and progress.
+        </p>
+        <p>
+          <%= link_to "Sign Up", new_trustee_registration_path, class: "btn btn-primary" %>
+          <%= link_to "Sign In", new_trustee_session_path, class: "btn btn-default" %>
+        </p>
+      <% end %>
+		</div>
+	</div>
+</div>
