@@ -13,9 +13,15 @@
           <%= nav_link_to 'Projects', projects_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<%= nav_link_to 'Log In', new_trustee_session_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
-					</li>
+					<% if trustee_signed_in? %>
+						<li>
+							<%= link_to "Log Out", destroy_trustee_session_path, :method => :delete %>
+						</li>
+					<% else %>
+						<li>
+							<%= nav_link_to 'Log In', new_trustee_session_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
+						</li>
+					<% end %>
 				</ul>
 			</div>
 
