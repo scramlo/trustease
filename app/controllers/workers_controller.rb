@@ -1,4 +1,5 @@
 class WorkersController < ApplicationController
+  before_action :authenticate_trustee!
 
   def create
     @project = Project.find(params[:project_id])
