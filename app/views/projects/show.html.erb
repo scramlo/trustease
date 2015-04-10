@@ -10,7 +10,11 @@
         <%= @project.description %>
 			</div>
 			<div class="panel-footer">
-        <p><%= link_to "Back", projects_path, class: "btn btn-default" %> <%= link_to "Edit", edit_project_path(@project), class: "btn btn-default"%></p>
+        <p>
+					<%= link_to "Back", projects_path, class: "btn btn-default" %>
+					<%= link_to "Edit", edit_project_path(@project), class: "btn btn-default"%>
+					<%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning pull-right" %>
+				</p>
 			</div>
 		</div>
 	</div>
@@ -26,16 +30,18 @@
           </h3>
         </a>
       </div>
-      <div id="collapse1" class="panel-collapse collapse">
+      <div id="collapse1" class="panel-collapse collapse.in">
         <ul class='list-group'>
           <% @project.workers.each do |worker| %>
           <% next if worker.new_record? %>
             <li class="list-group-item">
               <p>
                 <strong><%= worker.name %></strong>
-                <%= link_to [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } do %>
-                  <span class='glyphicon glyphicon-remove'></span>
-                <% end %>
+								<% if @project.trustee_id == current_trustee.id %>
+	                <%= link_to [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } do %>
+	                  <span class='glyphicon glyphicon-remove'></span>
+	                <% end %>
+								<% end %>
               </p>
               <p><%= worker.number %>, <%= worker.email %></p>
             </li>
@@ -60,20 +66,23 @@
           </h3>
         </a>
       </div>
-      <div id="collapse2" class="panel-collapse collapse">
+      <div id="collapse2" class="panel-collapse collapse.in">
         <div class="panel-body">
-          <ol>
-          <% @project.steps.each do |step| %>
-          <% next if step.new_record? %>
-            <li>
-              <%= step.name %>
-              <%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <span class='glyphicon glyphicon-remove'></span>
-              <% end %>
-            </li>
-            <br>
-          <% end %>
-          </ol>
+					<table class='table-striped'>
+						<% @project.steps.each do |step| %>
+							<tr>
+								<td>
+									<%= step.name %>
+								</td>
+								<td>
+									<%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
+										<span class='glyphicon glyphicon-remove'></span>
+									<% end %>
+								</td>
+							</tr>
+						<% end %>
+					</table>
+
         </div>
       </div>
       <div class="panel-footer">

@@ -1,5 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_trustee!
+  before_action :correct_trustee, only: [:edit, :update, :destroy]
 
   def index
     @projects = Project.all
@@ -11,6 +12,8 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.trustee_id = current_trustee.id # You need to add this line
+
   end
 
   def edit
@@ -19,6 +22,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
+    @project.trustee_id = current_trustee.id # You need to add this line
     if
       @project.save
       redirect_to @project
@@ -48,4 +52,5 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title, :description)
   end
+
 end

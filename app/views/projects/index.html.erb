@@ -10,10 +10,7 @@
     <% @projects.each do |project| %>
       <h3>
         <%= link_to project.title, project_path(project) %>
-        <small>Created <%= project.created_at.strftime('%b %d') %></small>
-        <% if current_trustee %>
-          <%= link_to "Delete", project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning btn-sm pull-right" %>
-        <% end %>
+        <p><small>Created <%= project.created_at.strftime('%b %d') %> by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %></small></p>
       </h3>
       <p><%= project.description %></p>
     <% end %>
