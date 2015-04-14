@@ -68,23 +68,30 @@
       </div>
       <div id="collapse2" class="panel-collapse collapse.in">
         <div class="panel-body">
-					<table class='table-striped'>
-						<% @project.steps.each do |step| %>
+					<table class="table" id="sortable">
+						<caption>Optional table caption.</caption>
+						<thead>
 							<tr>
-								<td>
-									<%= step.name %>
-								</td>
-								<td>
-									<%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
-										<span class='glyphicon glyphicon-remove'></span>
-									<% end %>
-								</td>
+								<th>Completed</th>
+								<th>Step</th>
+								<th>Delete</th>
 							</tr>
-						<% end %>
+						</thead>
+						<tbody>
+							<% @project.steps.each do |step| %>
+								<tr data-item-id="<%= step.id %>" class="item">
+									<td><input type="checkbox"></td>
+									<td><%= step.name %></td>
+									<td>
+										<%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
+											<span class='glyphicon glyphicon-remove pull-right'></span>
+										<% end %>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
 					</table>
-
-        </div>
-      </div>
+      	</div>
       <div class="panel-footer">
         <!-- Button trigger AddStepModal -->
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#AddStep">

@@ -9,7 +9,7 @@
  * compiled file so the styles you add here take precedence over styles defined in any styles
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
- *
+ *= require jquery-ui.min.css
  *= require_tree .
  *= require_self
  */
@@ -28,3 +28,26 @@ body { padding-top: 1%; }
 @import "bootswatch/cerulean/bootswatch";
 
 // Whatever application styles you have go last
+
+#steps-list {
+    list-style: none;
+    padding: 0;
+}
+
+#steps-list li:before {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    padding: 0 10px;
+    content: "\e068";
+}
+
+#steps-list li {
+  line-height:2.5em;
+}

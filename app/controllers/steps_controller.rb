@@ -17,6 +17,15 @@ class StepsController < ApplicationController
     @step.update(step_params)
   end
 
+  def update_row_order
+    @project = Project.find(params[:project_id])
+    @step = @project.steps.find(params[:id])
+    @step.row_order_position = thing_params[:row_order_position]
+    @step.save
+
+  render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+  end
+
   def destroy
     @project = Project.find(params[:project_id])
     @step = @project.steps.find(params[:id])
@@ -26,7 +35,7 @@ class StepsController < ApplicationController
 
   private
     def step_params
-      params.require(:step).permit(:name)
+      params.require(:step).permit(:name, :row_order_position)
     end
 
 end

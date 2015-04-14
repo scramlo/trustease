@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   devise_for :trustees
   resources :projects do
     resources :workers, controller: "workers"
-    resources :steps, controller: "steps"
+    resources :steps, controller: "steps" do
+      post :update_row_order, on: :collection
+    end
   end
 
   root 'home#index'

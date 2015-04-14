@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all
+    @steps = Step.rank(:row_order).all
   end
 
   def show

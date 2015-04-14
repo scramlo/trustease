@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.3.3'
 gem 'bootswatch-rails', '~> 3.2.4'
 gem 'devise', '~> 3.4.1'
 gem 'nav_lynx', '~> 1.1.1'
+gem 'ranked-model', '~> 0.4.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -40,10 +41,17 @@ gem 'nav_lynx', '~> 1.1.1'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'sqlite3'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring', "~>1.3.4"
+
 end
+
+  group :production do
+    gem 'pg'
+    gem 'rails_12factor'
+  end

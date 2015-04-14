@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150409160330) do
+ActiveRecord::Schema.define(version: 20150410215757) do
 
   create_table "projects", force: :cascade do |t|
     t.string   "title"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20150409160330) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean  "done"
+    t.integer  "priority"
+    t.integer  "row_order"
   end
 
   add_index "steps", ["project_id"], name: "index_steps_on_project_id"
