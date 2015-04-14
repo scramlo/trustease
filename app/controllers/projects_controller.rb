@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  http_basic_authenticate_with name: "swc", password: "SpoWes1100"
   before_action :authenticate_trustee!
   before_action :correct_trustee, only: [:edit, :update, :destroy]
 
