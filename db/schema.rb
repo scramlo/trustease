@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150410215757) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "projects", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150410215757) do
     t.integer  "row_order"
   end
 
-  add_index "steps", ["project_id"], name: "index_steps_on_project_id"
+  add_index "steps", ["project_id"], name: "index_steps_on_project_id", using: :btree
 
   create_table "trustees", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -50,8 +53,8 @@ ActiveRecord::Schema.define(version: 20150410215757) do
     t.string   "lastname"
   end
 
-  add_index "trustees", ["email"], name: "index_trustees_on_email", unique: true
-  add_index "trustees", ["reset_password_token"], name: "index_trustees_on_reset_password_token", unique: true
+  add_index "trustees", ["email"], name: "index_trustees_on_email", unique: true, using: :btree
+  add_index "trustees", ["reset_password_token"], name: "index_trustees_on_reset_password_token", unique: true, using: :btree
 
   create_table "workers", force: :cascade do |t|
     t.string   "name"
@@ -62,6 +65,8 @@ ActiveRecord::Schema.define(version: 20150410215757) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "workers", ["project_id"], name: "index_workers_on_project_id"
+  add_index "workers", ["project_id"], name: "index_workers_on_project_id", using: :btree
 
+  add_foreign_key "steps", "projects"
+  add_foreign_key "workers", "projects"
 end
