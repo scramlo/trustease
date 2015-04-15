@@ -14,10 +14,16 @@
 						<% if trustee_signed_in? %>
 	          	<%= nav_link_to 'Projects', projects_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
 							<%= nav_link_to 'My Projects', myprojects_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
+							<%= nav_link_to new_project_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} do %>
+								<span class="glyphicon glyphicon-plus-sign"></span> New
+							<% end %>
 						<% end %>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<% if trustee_signed_in? %>
+							<li>
+								<%= link_to "Account", edit_trustee_registration_path %>
+							</li>
 							<li>
 								<%= link_to "Log Out", destroy_trustee_session_path, :method => :delete %>
 							</li>
