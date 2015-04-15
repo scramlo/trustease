@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.trustee_id = current_trustee.id # You need to add this line
+    @project.trustee_id = current_trustee.id
 
   end
 
@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.trustee_id = current_trustee.id # You need to add this line
+    @project.trustee_id = current_trustee.id
     if
       @project.save
       redirect_to @project
