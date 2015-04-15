@@ -16,16 +16,19 @@
  // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 // First import cerulean variables
-@import "bootswatch/cerulean/variables";
+//@import "bootswatch/yeti/variables";
 
 // Then bootstrap itself
 @import "bootstrap";
 
 // Bootstrap body padding for fixed navbar
-body { padding-top: 1%; }
+body { padding-top: 70px; }
 
 // And finally bootswatch style itself
-@import "bootswatch/cerulean/bootswatch";
+@import "bootswatch/yeti/bootswatch";
+
+//Siimple Theme for landing page
+@import "siimple-bootstrap-theme";
 
 // Whatever application styles you have go last
 
@@ -50,4 +53,23 @@ body { padding-top: 1%; }
 
 #steps-list li {
   line-height:2.5em;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  padding:1%;
 }

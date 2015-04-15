@@ -1,14 +1,16 @@
-<div class="row clearfix">
-	<div class="col-md-12 column">
-		<div class="jumbotron">
-      <% if trustee_signed_in? %>
-        <h1>
-          Hey <%= current_trustee.firstname %>!
-        </h1>
-        <p>
-          <%= link_to "All Projects", projects_path, class: "btn btn-primary" %>
-          <%= link_to "My Projects", myprojects_path, class: "btn btn-default" %>
-        </p>
+<div class="container">
+	<div class="row">
+		<div class="col-lg-6">
+			<% if trustee_signed_in? %>
+				<div class='text-center'>
+	        <h1>
+	          Hey <%= current_trustee.firstname %>!
+	        </h1>
+	        <p>
+	          <%= link_to "All Projects", projects_path, class: "btn btn-primary" %>
+	          <%= link_to "My Projects", myprojects_path, class: "btn btn-default" %>
+	        </p>
+				</div>
       <% else %>
         <h1>
           Welcome to Trust<i>ease!</i>
@@ -22,16 +24,9 @@
         </p>
       <% end %>
 		</div>
-		<div class="panel panel-info">
-			<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> Still Working On:</div>
-				<div class="panel-body">
-					<ul>
-						<li>Drag and drop order of Steps will not save</li>
-						<li>Checkbox on Steps will not do anything (yet)</li>
-						<li>Not all forms look the same</li>
-						<li>"My Projects" aren't listed</li>
-					</ul>
-				</div>
+		<div class="col-lg-4 col-lg-offset-2">
+
 		</div>
+
 	</div>
 </div>

@@ -10,10 +10,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class='container'>
+    <div class="container-fluid">
       <%= render 'layouts/navbar' %>
-      <%= yield %>
+    </div>
+      <% if current_page?(root_url) %>
+        <div id="header">
+        <%= yield %>
+        </div>
+      <% else %>
+        <div class='container'>
+          <%= yield %>
+        </div> <!-- end of container -->
+      <% end %>
       <%= render 'layouts/footer' %>
-    </div> <!-- end of container -->
   </body>
 </html>
