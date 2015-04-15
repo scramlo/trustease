@@ -25,7 +25,17 @@
       <% end %>
 		</div>
 		<div class="col-lg-4 col-lg-offset-2">
-
+			<% if trustee_signed_in? %>
+				<div class="panel panel-info">
+					<div class="panel-heading"><span class="glyphicon glyphicon-info-sign"></span> Still Working On:</div>
+						<div class="panel-body">
+							<ul>
+								<li>Drag and drop order of Steps will not save</li>
+								<li>Checkbox on Steps will not do anything (yet)</li>
+							</ul>
+						</div>
+				</div>
+			<% end %>
 		</div>
 
 	</div>
