@@ -4,6 +4,11 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">
           <%= @project.title %>
+					<% if @project.budgeted == true %>
+						<span class="label label-success pull-right">Budgeted</span>
+					<% else %>
+						<span class="label label-danger pull-right">Not in Budget</span>
+					<% end %>
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -68,7 +73,7 @@
       </div>
       <div id="collapse2" class="panel-collapse collapse.in">
         <div class="panel-body">
-					<table class="table" id="sortable">
+					<table class="table">
 						<thead>
 							<tr>
 								<th>Completed</th>
@@ -78,8 +83,8 @@
 						</thead>
 						<tbody>
 							<% @project.steps.each do |step| %>
-								<tr data-item-id="<%= step.id %>" class="item">
-									<td><input type="checkbox"></td>
+								<tr>
+									<td><%= check_box_tag "step_id[]", step.id %></td>
 									<td><%= step.name %></td>
 									<td>
 										<%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
@@ -96,6 +101,7 @@
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#AddStep">
           Add Step
         </button>
+				<%= submit_tag("Save", :class => ("btn btn-info pull-right")) %>
       </div>
     </div>
   </div>
