@@ -1,7 +1,7 @@
 <%= form_for([@project, @project.comments.build]) do |f| %>
   <div class="form-group">
-    <%= f.label :message %>
-    <%= f.text_field :message, autofocus: true, class: "form-control" %>
+    <%= f.label :message, "Your Comment:" %>
+    <%= f.text_area :message, autofocus: true, class: "form-control" %>
   </div>
   <p>
     <%= f.submit "Submit", class: "btn btn-primary" %>

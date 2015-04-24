@@ -9,13 +9,17 @@
   </div>
   <div id="collapse3" class="panel-collapse collapse.in">
     <div class="panel-body">
-      foo
-      </div> <!-- end panel body -->
-    <div class="panel-footer">
-      <!-- Button trigger AddStepModal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddComment">
-        Add Comment
+      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#AddComment">
+        <span class="glyphicon glyphicon-bullhorn"></span> Add A Comment
       </button>
+      <hr>
+      <% @project.comments.each do |msg| %>
+        <h4><%= msg.trustee.firstname %> <%= msg.trustee.lastname.first %> <small>posted on <%= msg.created_at.strftime('%b %d') %> at <%= msg.created_at.strftime("at %I:%M%p") %></small></h4>
+        <p><%= msg.message %></p>
+        <hr>
+      <% end %>
+    </div> <!-- end panel body -->
+    <div class="panel-footer">
     </div> <!-- end panel footer -->
   </div>
 </div>

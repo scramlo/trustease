@@ -6,6 +6,8 @@ class CommentsController < ApplicationController
   def create
     @project = Project.find(params[:project_id])
     @comment = @project.comments.create(comment_params)
+    @comment.trustee_id = @project.trustee.id
+    @comment.save
     redirect_to project_path(@project)
   end
 
@@ -37,7 +39,7 @@ class CommentsController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:message)
+      params.require(:comment).permit(:message, :trustee_id, :project_id)
     end
 
 end
