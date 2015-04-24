@@ -1,0 +1,34 @@
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
+      <h3 class="panel-title">
+          Workers
+          <div class='pull-right'><span class="glyphicon glyphicon-collapse-down"></span></div>
+      </h3>
+    </a>
+  </div>
+  <div id="collapse1" class="panel-collapse collapse.in">
+    <ul class='list-group'>
+      <% @project.workers.each do |worker| %>
+      <% next if worker.new_record? %>
+        <li class="list-group-item">
+          <p>
+            <strong><%= worker.name %></strong>
+            <% if @project.trustee_id == current_trustee.id %>
+              <%= link_to [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } do %>
+                <span class='glyphicon glyphicon-remove'></span>
+              <% end %>
+            <% end %>
+          </p>
+          <p><%= worker.number %>, <%= worker.email %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="panel-footer">
+    <!-- Button trigger AddWorkerModal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddWorker">
+      Add Worker
+    </button>
+  </div>
+</div>
