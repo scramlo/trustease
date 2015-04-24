@@ -37,7 +37,7 @@ class StepsController < ApplicationController
 
   private
     def step_params
-      params.require(:step).permit(:name, :row_order_position)
+      params.require(:step).permit(:name, :row_order_position, :done)
     end
 
 end

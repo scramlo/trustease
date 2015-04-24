@@ -19,12 +19,17 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :coordinator %>
+    <%= f.text_field :coordinator, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :description %>
     <%= f.text_area :description, autofocus: true, class: "form-control" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :budgeted, "Project Has Been Budgeted For:" %>
+    <%= f.label :budgeted, "Has the project been budgeted for?" %>
     <%= f.check_box :budgeted %>
   </div>
 

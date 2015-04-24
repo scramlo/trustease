@@ -1,0 +1,49 @@
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <a data-toggle="collapse" data-parent="#accordion2" href="#collapse2">
+      <h3 class="panel-title">
+        Steps
+        <div class='pull-right'><span class="glyphicon glyphicon-collapse-down"></span></div>
+      </h3>
+    </a>
+  </div>
+  <div id="collapse2" class="panel-collapse collapse.in">
+    <div class="panel-body">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Completed</th>
+            <th>Step</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+          <tbody>
+            <% @project.steps.each do |step| %>
+              <tr>
+                <td>
+                  <input type="checkbox">
+                </td>
+              <% if step.done == true %>
+                <td><strike class="muted"><%= step.name %></strike></td>
+              <% else %>
+                <td><%= step.name %></td>
+              <% end %>
+                <td>
+                  <%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <span class='glyphicon glyphicon-remove pull-right'></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div> <!-- end panel body -->
+    <div class="panel-footer">
+      <!-- Button trigger AddStepModal -->
+      <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#AddStep">
+        Add Step
+      </button>
+      <%= submit_tag("Save", :class => ("btn btn-info pull-right")) %>
+    </div> <!-- end panel footer -->
+  </div>
+</div>
