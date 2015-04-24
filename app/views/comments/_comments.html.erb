@@ -16,6 +16,13 @@
       <% @project.comments.each do |msg| %>
         <h4><%= msg.trustee.firstname %> <%= msg.trustee.lastname.first %> <small>posted on <%= msg.created_at.strftime('%b %d') %> at <%= msg.created_at.strftime("at %I:%M%p") %></small></h4>
         <p><%= msg.message %></p>
+        <% if msg.trustee_id == current_trustee.id %>
+          <%= link_to [msg.project, msg], method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <button type="button" class="btn btn-danger btn-sm">Delete</button>
+          <% end %>
+        <% else %>
+
+        <% end %>
         <hr>
       <% end %>
     </div> <!-- end panel body -->
