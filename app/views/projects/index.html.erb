@@ -12,7 +12,7 @@
         <%= link_to project.title, project_path(project) %>
         <p>
           <small>
-            Created <%= project.created_at.strftime('%b %d') %> by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %>
+            Created by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %> on <%= project.created_at.strftime('%b %d') %> 
             | Coordinator:
             <% if project.coordinator? %>
             <%= project.coordinator %>

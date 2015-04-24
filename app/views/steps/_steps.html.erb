@@ -12,7 +12,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Completed</th>
+            <th>#</th>
             <th>Step</th>
             <th>Delete</th>
           </tr>
@@ -21,7 +21,7 @@
             <% @project.steps.each do |step| %>
               <tr>
                 <td>
-                  <input type="checkbox">
+                  <%= step.id %>
                 </td>
               <% if step.done == true %>
                 <td><strike class="muted"><%= step.name %></strike></td>
