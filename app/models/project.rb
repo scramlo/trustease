@@ -6,4 +6,5 @@ class Project < ActiveRecord::Base
   belongs_to :trustee
   has_many :workers, dependent: :destroy
   has_many :steps, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

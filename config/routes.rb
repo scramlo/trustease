@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :comments
+
   devise_for :trustees
   resources :projects do
     resources :workers, controller: "workers"
     resources :steps, controller: "steps"
+    resources :comments, controller: "comments"
   end
 
   root 'home#index'

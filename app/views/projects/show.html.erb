@@ -2,6 +2,11 @@
 	<div class="col-md-12 column">
 		<h2>
 			<%= @project.title %>
+			<% if @project.budgeted == true %>
+				<span class="label label-success pull-right">Budgeted</span>
+			<% else %>
+				<span class="label label-danger pull-right">Not in Budget</span>
+			<% end %>
 			<p>
 				<small>
 					Created <%= @project.created_at.strftime('%b %d') %> by <%= @project.trustee.firstname %> <%= @project.trustee.lastname.first %>
@@ -18,11 +23,6 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">
           Decription
-					<% if @project.budgeted == true %>
-						<span class="label label-success pull-right">Budgeted</span>
-					<% else %>
-						<span class="label label-danger pull-right">Not in Budget</span>
-					<% end %>
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -44,8 +44,26 @@
 		<%= render "steps/steps" %>
   </div>
   <div class="col-md-6 column">
-
+		<%= render "comments/comments" %>
 	</div>
+</div>
+
+<!-- Add A Comment Modal -->
+<div class="modal fade" id="AddStep" tabindex="-1" role="dialog" aria-labelledby="AddCommentLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="AddCommentLabel">Add A Step</h4>
+      </div>
+      <div class="modal-body">
+        <%= render "comments/form" %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- Add A Worker Modal -->
