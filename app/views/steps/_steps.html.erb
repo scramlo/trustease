@@ -18,10 +18,10 @@
           </tr>
         </thead>
           <tbody>
-            <% @project.steps.each do |step| %>
+            <% @project.steps.each_with_index do |step, i| %>
               <tr>
                 <td>
-                  <%= step.id %>
+                  <%= (i+1) %>
                 </td>
               <% if step.done == true %>
                 <td><strike class="muted"><%= step.name %></strike></td>
