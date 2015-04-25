@@ -35,7 +35,7 @@
 
   <div class="form-group">
     <%= f.label :priority_level, "Level of Priority (1 is low):" %>
-    <%= f.integer %>
+    <%= f.select :priority_level, (1..5) %>
   </div>
 
   <p>
