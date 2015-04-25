@@ -10,9 +10,23 @@
     <% @projects.each do |project| %>
       <h3>
         <%= link_to project.title, project_path(project) %>
+        <% if project.priority_level == 1 %>
+          <span style="margin-right:1%;" class="label label-default pull-right">Priority Level 1</span>
+        <% elsif project.priority_level == 2 %>
+          <span style="margin-right:1%;" class="label label-success pull-right">Priority Level 2</span>
+        <% elsif project.priority_level == 3 %>
+          <span style="margin-right:1%;" class="label label-info pull-right">Priority Level 3</span>
+        <% elsif project.priority_level == 4 %>
+          <span style="margin-right:1%;" class="label label-warning pull-right">Priority Level 4</span>
+        <% elsif project.priority_level == 5 %>
+          <span style="margin-right:1%;" class="label label-danger pull-right">Priority Level 5</span>
+          <% else %>
+            <span style="margin-right:1%;" id="PriorityNotSet" class="label label-default pull-right">Priority Not Set</span>
+        <% end %>
+
         <p>
           <small>
-            Created by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %> on <%= project.created_at.strftime('%b %d') %> 
+            Created by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %> on <%= project.created_at.strftime('%b %d') %>
             | Coordinator:
             <% if project.coordinator? %>
             <%= project.coordinator %>
@@ -27,19 +41,6 @@
   </div>
     <div class="col-md-4 column">
 
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Recent Activity
-          </h3>
-        </div>
-        <div class="panel-body">
-          <i>Coming Soon...</i>
-        </div>
-        <div class="panel-footer">
-          Panel footer
-        </div>
-      </div> <!-- end of panel -->
-    </div> <!-- end of Recent Activity Column -->
+    </div> <!-- end of 4 Column -->
   </div>
 </div>

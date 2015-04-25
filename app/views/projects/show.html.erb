@@ -7,17 +7,7 @@
 			<% else %>
 				<span class="label label-danger pull-right">Not in Budget</span>
 			<% end %>
-			<% if @project.priority_level == 1 %>
-				<span style="margin-right:1%;" class="label label-default pull-right">Priority Level 1</span>
-			<% elsif @project.priority_level == 2 %>
-				<span style="margin-right:1%;" class="label label-success pull-right">Priority Level 2</span>
-			<% elsif @project.priority_level == 3 %>
-				<span style="margin-right:1%;" class="label label-info pull-right">Priority Level 3</span>
-			<% elsif @project.priority_level == 4 %>
-				<span style="margin-right:1%;" class="label label-warning pull-right">Priority Level 4</span>
-			<% else @project.priority_level == 5 %>
-				<span style="margin-right:1%;" class="label label-danger pull-right">Priority Level 5</span>
-			<% end %>
+			<%= render "projects/prioritybadge" %>
 			<p>
 				<small>
 					Created <%= @project.created_at.strftime('%b %d') %> by <%= @project.trustee.firstname %> <%= @project.trustee.lastname.first %>

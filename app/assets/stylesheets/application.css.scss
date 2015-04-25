@@ -31,28 +31,15 @@ body { padding-top: 70px; }
 @import "siimple-bootstrap-theme";
 
 // Whatever application styles you have go last
-
-#steps-list {
-    list-style: none;
-    padding: 0;
+.label-default {
+  background-color:#777;
+  color:white;
 }
 
-#steps-list li:before {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-family: 'Glyphicons Halflings';
-    font-style: normal;
-    font-weight: normal;
-    line-height: 1;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    padding: 0 10px;
-    content: "\e068";
-}
-
-#steps-list li {
-  line-height:2.5em;
+#PriorityNotSet {
+  background-color:white;
+  color:#777;
+  border:2px solid #777;
 }
 
 /* Sticky footer styles
