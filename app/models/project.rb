@@ -7,4 +7,5 @@ class Project < ActiveRecord::Base
   has_many :workers, dependent: :destroy
   has_many :steps, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_one :priorty_level, dependent: :destroy
 end

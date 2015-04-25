@@ -14,13 +14,12 @@
         <li class="list-group-item">
           <p>
             <strong><%= worker.name %></strong>
-            <% if @project.trustee_id == current_trustee.id %>
-              <%= link_to [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } do %>
-                <span class='glyphicon glyphicon-remove'></span>
-              <% end %>
+            <%= link_to [worker.project, worker],method: :delete,data: { confirm: 'Are you sure?' } do %>
+              <span class='glyphicon glyphicon-remove'></span>
             <% end %>
           </p>
-          <p><%= worker.number %>, <%= worker.email %></p>
+          <% if worker.number? %><p><span class="glyphicon glyphicon-phone"></span> <%= worker.number %><% end %></p>
+          <% if worker.email? %><p><span class="glyphicon glyphicon-envelope"></span> <%= worker.email %><% end %></p>
         </li>
       <% end %>
     </ul>

@@ -33,6 +33,11 @@
     <%= f.check_box :budgeted %>
   </div>
 
+  <div class="form-group">
+    <%= f.label :priority_level, "Level of Priority (1 is low):" %>
+    <%= f.integer %>
+  </div>
+
   <p>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   </p>
