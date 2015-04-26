@@ -6,6 +6,8 @@
   <span style="margin-right:1%;" class="label label-info pull-right">Priority Level 3</span>
 <% elsif @project.priority_level == 4 %>
   <span style="margin-right:1%;" class="label label-warning pull-right">Priority Level 4</span>
-<% else @project.priority_level == 5 %>
+<% elsif @project.priority_level == 5 %>
   <span style="margin-right:1%;" class="label label-danger pull-right">Priority Level 5</span>
+<% else %>
+  <span style="margin-right:1%;" id="PriorityNotSet" class="label label-default pull-right">Priority Not Set</span>
 <% end %>
