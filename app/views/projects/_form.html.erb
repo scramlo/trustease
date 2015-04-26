@@ -20,22 +20,32 @@
 
   <div class="form-group">
     <%= f.label :coordinator %>
-    <%= f.text_field :coordinator, autofocus: true, class: "form-control" %>
+    <%= f.text_field :coordinator, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description, autofocus: true, class: "form-control" %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
-  <div class="form-group">
-    <%= f.label :budgeted, "Has the project been budgeted for?" %>
-    <%= f.check_box :budgeted %>
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :budgeted %>Is this item in the annual budget?
+    </label>
+  </div>
+
+  <div style="width:250px;" class="form-group">
+    <%= f.label :cost, "What's the Estimated Cost?" %>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <%= f.number_field :cost, class: "form-control", placeholder: "Amount" %>
+      <div class="input-group-addon">.00</div>
+    </div>
   </div>
 
   <div class="form-group">
     <%= f.label :priority_level, "Level of Priority (1 is low):" %>
-    <%= f.select :priority_level, (1..5) %>
+    <%= f.select :priority_level, (1..5), class: "form-control" %>
   </div>
 
   <p>

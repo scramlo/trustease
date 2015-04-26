@@ -3,7 +3,7 @@
 		<h2>
 			<%= @project.title %>
 			<% if @project.budgeted == true %>
-				<span class="label label-success pull-right">Budgeted</span>
+				<span class="label label-success pull-right">Budgeted: $<%= @project.cost %></span>
 			<% else %>
 				<span class="label label-danger pull-right">Not in Budget</span>
 			<% end %>
