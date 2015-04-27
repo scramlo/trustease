@@ -34,13 +34,9 @@
     </label>
   </div>
 
-  <div style="width:250px;" class="form-group">
-    <%= f.label :cost, "What's the Estimated Cost?" %>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <%= f.number_field :cost, class: "form-control", placeholder: "Amount" %>
-      <div class="input-group-addon">.00</div>
-    </div>
+  <div class="form-group">
+    <%= f.label :cost, "Estimated Cost of Project:" %>
+    <%= f.number_field :cost, class: "form-control", placeholder: "For Example: 200" %>
   </div>
 
   <div class="form-group">

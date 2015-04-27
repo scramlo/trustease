@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :trustees
-  
+
   resources :projects do
     resources :workers, controller: "workers"
     resources :steps, controller: "steps"

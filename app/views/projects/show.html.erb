@@ -3,9 +3,20 @@
 		<h2>
 			<%= @project.title %>
 			<% if @project.budgeted == true %>
-				<span class="label label-success pull-right">Budgeted: $<%= @project.cost %></span>
+				<span class="label label-success pull-right">Budgeted: $
+					<% if @project.cost? %>
+						<%= number_with_precision(@project.cost, precision: 2) %></span>
+					<% else %>
+					0.00</span>
+					<% end %>
 			<% else %>
-				<span class="label label-danger pull-right">Not in Budget</span>
+				<span class="label label-danger pull-right">Not in Budget: $
+					<% if @project.cost? %>
+						<%= number_with_precision(@project.cost, precision: 2) %></span>
+					<% else %>
+					0.00</span>
+					<% end %>
+				</span>
 			<% end %>
 			<%= render "projects/prioritybadge" %>
 			<p>
