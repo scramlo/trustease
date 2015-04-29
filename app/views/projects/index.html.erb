@@ -11,7 +11,7 @@
     <button type="button" class="btn btn-default" id="sortdate">Date</button>
     <button type="button" class="btn btn-default" id="sortpriority">Priority</button>
     <button type="button" class="btn btn-default" id="sortcoordinator">Coordinator</button>
-    <button type="button" class="btn btn-default" id="sortcreator">Creator Last Name</button>
+    <button type="button" class="btn btn-default" id="sortcreator">Creator</button>
     <div class='listprojects'>
       <% @projects.each do |project| %>
         <div data-creator="<%= project.trustee.lastname %>" data-coordinator="<%= project.coordinator %>" data-date="<%= project.created_at %>" data-priority="<%= project.priority_level %>">
