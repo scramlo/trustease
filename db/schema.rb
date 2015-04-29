@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425214001) do
+ActiveRecord::Schema.define(version: 20150429143453) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20150425214001) do
     t.string   "coordinator"
     t.integer  "priority_level"
     t.decimal  "cost"
+    t.boolean  "archived"
   end
 
   create_table "steps", force: :cascade do |t|

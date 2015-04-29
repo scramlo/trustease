@@ -14,6 +14,7 @@
 						<% if trustee_signed_in? %>
 	          	<%= nav_link_to 'Projects', projects_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
 							<%= nav_link_to 'My Projects', myprojects_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
+							<%= nav_link_to 'Archived', archived_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} %>
 							<%= nav_link_to new_project_path, {}, {:wrapper => "li", :wrapper_class => 'nav-item'} do %>
 								<span class="glyphicon glyphicon-plus-sign"></span> New
 							<% end %>

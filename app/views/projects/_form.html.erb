@@ -44,6 +44,12 @@
     <%= f.select :priority_level, (1..5), class: "form-control" %>
   </div>
 
+  <div class="checkbox">
+    <label>
+      <%= f.check_box :archived %>Project Completed
+    </label>
+  </div>
+
   <p>
     <%= f.submit "Submit", class: "btn btn-primary" %>
   </p>

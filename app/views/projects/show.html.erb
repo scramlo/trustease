@@ -35,6 +35,13 @@
 			<div class="panel-heading">
 				<h3 class="panel-title">
           Decription
+					<span class="pull-right">
+						<% if @project.archived == false %>
+						Currently Active
+						<% else %>
+						Archived
+						<% end %>
+					</span>
 				</h3>
 			</div>
 			<div class="panel-body">
@@ -43,7 +50,7 @@
 			<div class="panel-footer">
         <p>
 					<%= link_to "Back", projects_path, class: "btn btn-default" %>
-					<%= link_to "Edit", edit_project_path(@project), class: "btn btn-default"%>
+					<%= link_to "Details", edit_project_path(@project), class: "btn btn-default"%>
 					<%= link_to "Delete", project_path(@project), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-warning pull-right" %>
 				</p>
 			</div>

@@ -4,6 +4,13 @@
 			<% if trustee_signed_in? %>
 				<div class='text-center'>
 	        <h1>
+						<small><p><%= @projects.count %>
+							<% if @projects.count < 2 %>
+							Project Has
+							<% else %>
+							Projects Have
+							<% end %>
+							Been Completed</p></small>
 	          Hey <%= current_trustee.firstname %>!
 	        </h1>
 	        <p>
