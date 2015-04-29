@@ -6,41 +6,47 @@
     <%= link_to "Create Project", new_project_path, class: "btn btn-success" %>
     <hr>
   </div>
-  <div class="col-md-8 column">
-    <% @projects.each do |project| %>
-      <h3>
-        <%= link_to project.title, project_path(project) %>
-        <% if project.priority_level == 1 %>
-          <span style="margin-right:1%;" class="label label-default pull-right">Priority Level 1</span>
-        <% elsif project.priority_level == 2 %>
-          <span style="margin-right:1%;" class="label label-success pull-right">Priority Level 2</span>
-        <% elsif project.priority_level == 3 %>
-          <span style="margin-right:1%;" class="label label-info pull-right">Priority Level 3</span>
-        <% elsif project.priority_level == 4 %>
-          <span style="margin-right:1%;" class="label label-warning pull-right">Priority Level 4</span>
-        <% elsif project.priority_level == 5 %>
-          <span style="margin-right:1%;" class="label label-danger pull-right">Priority Level 5</span>
-        <% else %>
-          <span style="margin-right:1%;" id="PriorityNotSet" class="label label-default pull-right">Priority Not Set</span>
-        <% end %>
-
-        <p>
-          <small>
-            Created by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %> on <%= project.created_at.strftime('%b %d') %>
-            | Coordinator:
-            <% if project.coordinator? %>
-            <%= project.coordinator %>
+  <div class="col-md-12 column">
+    <!-- Standard button -->
+    <button type="button" class="btn btn-default" id="sortdate">Date</button>
+    <button type="button" class="btn btn-default" id="sortpriority">Priority</button>
+    <button type="button" class="btn btn-default" id="sortcoordinator">Coordinator</button>
+    <button type="button" class="btn btn-default" id="sortcreator">Creator Last Name</button>
+    <div class='listprojects'>
+      <% @projects.each do |project| %>
+        <div data-creator="<%= project.trustee.lastname %>" data-coordinator="<%= project.coordinator %>" data-date="<%= project.created_at %>" data-priority="<%= project.priority_level %>">
+          <h3>
+            <%= link_to project.title, project_path(project) %>
+            <% if project.priority_level == 1 %>
+              <span style="margin-right:1%;" class="label label-default pull-right">Priority Level 1</span>
+            <% elsif project.priority_level == 2 %>
+              <span style="margin-right:1%;" class="label label-success pull-right">Priority Level 2</span>
+            <% elsif project.priority_level == 3 %>
+              <span style="margin-right:1%;" class="label label-info pull-right">Priority Level 3</span>
+            <% elsif project.priority_level == 4 %>
+              <span style="margin-right:1%;" class="label label-warning pull-right">Priority Level 4</span>
+            <% elsif project.priority_level == 5 %>
+              <span style="margin-right:1%;" class="label label-danger pull-right">Priority Level 5</span>
             <% else %>
-            Unassigned
+              <span style="margin-right:1%;" id="PriorityNotSet" class="label label-default pull-right">Priority Not Set</span>
             <% end %>
-          </small>
-        </p>
-      </h3>
-      <p><%= project.description %></p>
-    <% end %>
-  </div>
-    <div class="col-md-4 column">
 
-    </div> <!-- end of 4 Column -->
+            <p>
+              <small>
+                Created by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %> on <%= project.created_at.strftime('%b %d') %>
+                | Coordinator:
+                <% if project.coordinator? %>
+                <%= project.coordinator %>
+                <% else %>
+                Unassigned
+                <% end %>
+              </small>
+            </p>
+          </h3>
+          <p><%= project.description %></p>
+        </div> <!-- end of single project description -->
+      <% end %>
+    </div> <!-- end of listprojects -->
   </div>
 </div>
+<%= render "projects/sortingjs" %>

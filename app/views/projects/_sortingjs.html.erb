@@ -1,0 +1,85 @@
+<script>
+//Sort Date
+$( "#sortdate" ).click(function() {
+var $projects = $('div.listprojects'),
+	$projectsdiv = $projects.children('div');
+
+$projectsdiv.sort(function(a,b){
+	var an = a.getAttribute('data-date'),
+		bn = b.getAttribute('data-date');
+
+	if(an > bn) {
+		return 1;
+	}
+	if(an < bn) {
+		return -1;
+	}
+	return 0;
+});
+
+$projectsdiv.detach().appendTo($projects);
+});
+
+//Sort Priority
+$( "#sortpriority" ).click(function() {
+var $projects = $('div.listprojects'),
+	$projectsdiv = $projects.children('div');
+
+$projectsdiv.sort(function(b,a){
+	var an = a.getAttribute('data-priority'),
+		bn = b.getAttribute('data-priority');
+
+	if(an > bn) {
+		return 1;
+	}
+	if(an < bn) {
+		return -1;
+	}
+	return 0;
+});
+
+$projectsdiv.detach().appendTo($projects);
+});
+
+//Sort Coordinator
+$( "#sortcoordinator" ).click(function() {
+var $projects = $('div.listprojects'),
+	$projectsdiv = $projects.children('div');
+
+$projectsdiv.sort(function(a,b){
+	var an = a.getAttribute('data-coordinator'),
+		bn = b.getAttribute('data-coordinator');
+
+	if(an > bn) {
+		return 1;
+	}
+	if(an < bn) {
+		return -1;
+	}
+	return 0;
+});
+
+$projectsdiv.detach().appendTo($projects);
+});
+
+//Sort Creator
+$( "#sortcreator" ).click(function() {
+var $projects = $('div.listprojects'),
+	$projectsdiv = $projects.children('div');
+
+$projectsdiv.sort(function(a,b){
+	var an = a.getAttribute('data-creator'),
+		bn = b.getAttribute('data-creator');
+
+	if(an > bn) {
+		return 1;
+	}
+	if(an < bn) {
+		return -1;
+	}
+	return 0;
+});
+
+$projectsdiv.detach().appendTo($projects);
+});
+</script>
