@@ -4,7 +4,7 @@ $( "#sortdate" ).click(function() {
 var $projects = $('div.listprojects'),
 	$projectsdiv = $projects.children('div');
 
-$projectsdiv.sort(function(a,b){
+$projectsdiv.sort(function(b,a){
 	var an = a.getAttribute('data-date'),
 		bn = b.getAttribute('data-date');
 
