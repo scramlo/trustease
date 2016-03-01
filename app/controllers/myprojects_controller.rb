@@ -3,7 +3,7 @@ class MyprojectsController < ApplicationController
   before_action :authenticate_trustee!
 
   def index
-    @myprojects = current_trustee.projects.all
+    @myprojects = Project.where(coordinator: current_trustee.id)
     @trustee = current_trustee.firstname
   end
 end

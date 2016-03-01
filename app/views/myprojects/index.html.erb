@@ -1,14 +1,14 @@
 <div class="row clearfix">
   <div class="col-md-12 column">
     <h1>
-      <%= @trustee %>'s Projects
+      <%= @trustee %>'s Assigned Projects
     </h1>
     <%= link_to "Create Project", new_project_path, class: "btn btn-success" %>
     <hr>
   </div>
   <div class="col-md-8 column">
     <% if @myprojects.any? == false %>
-      <p>You haven't created any projects.</p>
+      <p>You haven't been assigned any projects.</p>
     <% end %>
     <% @myprojects.each do |project| %>
       <h3>

@@ -24,8 +24,7 @@
 					Created <%= @project.created_at.strftime('%b %d') %> by <%= @project.trustee.firstname %> <%= @project.trustee.lastname.first %>
 					| Coordinator:
 					<% if @project.coordinator != "nil" %>
-					<%= @coordinator.find(@project.coordinator.to_i).firstname %>
-					<%= @coordinator.find(@project.coordinator.to_i).lastname %>
+					<%= @coordinator.find(@project.coordinator.to_i).firstname + " " + @coordinator.find(@project.coordinator.to_i).lastname %>
 					<% else %>
 					Unassigned
 					<% end %>
