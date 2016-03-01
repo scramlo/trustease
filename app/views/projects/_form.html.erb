@@ -23,7 +23,7 @@
     <select id="project_coordinator" class="form-control" name="project[coordinator]">
       <option value="nil">Unassigned</option>
       <% @trustees.each do |trustee| %>
-        <option value="<%= trustee.id %>"><%= trustee.firstname + " " + trustee.lastname %></option>
+        <option value="<%= trustee.id %>"<% if (@project.coordinator.to_i == trustee.id) %> selected="selected" <% end %>><%= trustee.firstname + " " + trustee.lastname %></option>
       <% end %>
     </select>
   </div>
