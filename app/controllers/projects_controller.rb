@@ -3,21 +3,25 @@ class ProjectsController < ApplicationController
   before_action :authenticate_trustee!
 
   def index
+    @coordinator = Trustee.all
     @projects = Project.all
     @steps = Step.rank(:row_order).all
   end
 
   def show
     @project = Project.find(params[:id])
+    @coordinator = Trustee.all
   end
 
   def new
+    @trustees = Trustee.all
     @project = Project.new
     @project.trustee_id = current_trustee.id
 
   end
 
   def edit
+    @trustees = Trustee.all
     @project = Project.find(params[:id])
   end
 

@@ -36,11 +36,11 @@
               <small>
                 Created by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %> on <%= project.created_at.strftime('%b %d') %>
                 | Coordinator:
-                <% if project.coordinator? %>
-                <%= project.coordinator %>
-                <% else %>
-                Unassigned
-                <% end %>
+                <% if project.coordinator != "nil" %>
+      					<%= @coordinator.find(project.coordinator.to_i).firstname + " "+ @coordinator.find(project.coordinator.to_i).lastname %>
+      					<% else %>
+      					Unassigned
+      					<% end %>
               </small>
             </p>
           </h3>

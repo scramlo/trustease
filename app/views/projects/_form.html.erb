@@ -19,8 +19,13 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :coordinator %>
-    <%= f.text_field :coordinator, class: "form-control" %>
+    <label for="project_coordinator">Project Coordinator</label>
+    <select id="project_coordinator" class="form-control" name="project[coordinator]">
+      <option value="nil">Unassigned</option>
+      <% @trustees.each do |trustee| %>
+        <option value="<%= trustee.id %>"><%= trustee.firstname + " " + trustee.lastname %></option>
+      <% end %>
+    </select>
   </div>
 
   <div class="form-group">
