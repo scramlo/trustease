@@ -19,12 +19,6 @@ class StepsController < ApplicationController
     @step.update(step_params)
   end
 
-  def update_row_order
-    @project = Project.find(params[:project_id])
-    @step = @project.steps.find(params[:id])
-    @step.row_order_position = thing_params[:row_order_position]
-    @step.save
-
   render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
   end
 

@@ -14,23 +14,24 @@
           <tr>
             <th>#</th>
             <th>Step</th>
+            <th>Complete</th>
             <th>Delete</th>
           </tr>
         </thead>
           <tbody>
             <% @project.steps.each_with_index do |step, i| %>
               <tr>
+                <td><%= i+1 %></td>
+                <td class="step" id="step-<%= step.id %>"><%= step.name %></td>
                 <td>
-                  <%= (i+1) %>
+                  <form accept-charset="UTF-8">
+                    <input class="" type="checkbox" id="box-<%= step.id %>" value="0" onchange="check(<%= step.id %>)" name="step[done]">
+                    <!-- <input class="btn btn-default" name="commit" type="submit" value="Update" /> -->
+                  </form>
                 </td>
-              <% if step.done == true %>
-                <td><strike class="muted"><%= step.name %></strike></td>
-              <% else %>
-                <td><%= step.name %></td>
-              <% end %>
                 <td>
                   <%= link_to [step.project, step], method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <span class='glyphicon glyphicon-remove pull-right'></span>
+                    <span class='glyphicon glyphicon-remove'></span>
                   <% end %>
                 </td>
               </tr>
@@ -46,3 +47,23 @@
     </div> <!-- end panel footer -->
   </div>
 </div>
+<script charset="utf-8">
+function check(id) {
+  var step = document.getElementById("step-" + id);
+  var thisBox = document.getElementById("box-" + id);
+  var saveBox = document.getElementById("save-box-" + id);
+
+  switch(thisBox.value) {
+    case "0":
+      step.className = "text-muted linethrough";
+      thisBox.value = "1";
+    break;
+
+    case "1":
+      step.removeAttribute("class");
+      thisBox.value = "0";
+
+    break;
+  }
+}
+</script>
