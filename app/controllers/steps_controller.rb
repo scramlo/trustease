@@ -19,9 +19,6 @@ class StepsController < ApplicationController
     @step.update(step_params)
   end
 
-  render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
-  end
-
   def destroy
     @project = Project.find(params[:project_id])
     @step = @project.steps.find(params[:id])
