@@ -6,33 +6,18 @@
     <%= link_to "Create Project", new_project_path, class: "btn btn-success" %>
     <hr>
   </div>
-  <div class="col-md-8 column">
-    <% if @myprojects.any? == false %>
-      <p>You haven't been assigned any projects.</p>
-    <% end %>
-    <% @myprojects.each do |project| %>
-      <h3>
-        <%= link_to project.title, project_path(project) %>
-        <p><small>Created <%= project.created_at.strftime('%b %d') %> by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %></small></p>
-      </h3>
-      <p><%= project.description %></p>
-    <% end %>
-  </div>
-    <div class="col-md-4 column">
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Recent Activity
-          </h3>
-        </div>
-        <div class="panel-body">
-          <i>Coming Soon...</i>
-        </div>
-        <div class="panel-footer">
-          Panel footer
-        </div>
-      </div> <!-- end of panel -->
-    </div> <!-- end of Recent Activity Column -->
+  <div class="row">
+    <div class="col-md-12 column">
+      <% if @myprojects.any? == false %>
+        <p>You haven't been assigned any projects.</p>
+      <% end %>
+      <% @myprojects.each do |project| %>
+        <h3>
+          <%= link_to project.title, project_path(project) %>
+          <p><small>Created <%= project.created_at.strftime('%b %d') %> by <%= project.trustee.firstname %> <%= project.trustee.lastname.first %></small></p>
+        </h3>
+        <p><%= project.description %></p>
+      <% end %>
+    </div>
   </div>
 </div>

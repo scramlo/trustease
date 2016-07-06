@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'vendors/index'
+
   devise_for :trustees
 
   resources :projects do
@@ -8,10 +10,13 @@ Rails.application.routes.draw do
     resources :comments, controller: "comments"
   end
 
+  resources :vendors
+
   root 'home#index'
 
   get "myprojects" => "myprojects#index"
   get "archived" => "archived#index"
+  get "vendors" => "vendors#index"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
