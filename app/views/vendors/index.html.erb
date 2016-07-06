@@ -1,1 +1,27 @@
-<h1>Preferred Vendors</h1>
+<div class="row">
+  <div class="col-md-12 column">
+    <h1>Preferred Vendors</h1>
+    <%= link_to "Add Vendor", new_vendor_path, class: "btn btn-success" %>
+    <hr>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+      <% @vendors.each do |vendor| %>
+        <h4>
+          <%= vendor.name %>
+          <small>
+            <%= link_to "Edit", edit_vendor_path(vendor) %>
+            <%=
+              link_to 'Delete', vendor_path(vendor),
+              method: :delete,
+              data: { confirm: 'Are you sure?' }
+            %>
+          </small>
+        </h4>
+        <p><%= vendor.info %></p>
+        <hr>
+      <% end %>
+
+  </div>
+</div>
